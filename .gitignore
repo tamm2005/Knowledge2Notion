@@ -1,0 +1,21 @@
+shopt -s nocaseglob
+**/foldername/
+**/filename.ext
+**/.git
+**/.svn
+**/.hg
+**/CVS
+**/.DS_Store
+**/Thumbs.db
+**/__pycache__
+**/.venv
+**/credentials.json
+**/token.json
+**/.vscode
+**/【ENPRO】上課版筆記/
+**/【ENPRO】筆記版筆記/
+**/【IGPRO】上課版筆記/
+**/【IGPRO】筆記版筆記/
+**/youtubekey.json
+**/data/
+**/utils/
