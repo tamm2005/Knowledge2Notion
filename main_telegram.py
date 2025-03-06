@@ -31,6 +31,7 @@ class TelegramAPIController(object):
         self.drive_id = drive_id_para
         self.databaseid = databaseid_para
         self.groups_name = groups_name
+        self.grab_tele_group = []
         self.telegram_service = TelegramAPIService(self.api_id,self.api_hash,self.grab_tele_group)
         self.threads_service = ThreadsGrabService(self.api_id,
                                                 self.api_hash,
