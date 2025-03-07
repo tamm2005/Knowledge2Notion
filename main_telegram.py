@@ -31,8 +31,8 @@ class TelegramAPIController(object):
         self.drive_id = drive_id_para
         self.databaseid = databaseid_para
         self.groups_name = groups_name
-        self.grab_tele_group = []
-        self.telegram_service = TelegramAPIService(self.api_id,self.api_hash,self.grab_tele_group)
+        #self.grab_tele_group = []
+        #self.telegram_service = TelegramAPIService(self.api_id,self.api_hash,self.grab_tele_group)
         self.threads_service = ThreadsGrabService(self.api_id,
                                                 self.api_hash,
                                                 self.groups_name,
@@ -111,8 +111,8 @@ if __name__ == "__main__":
     client_secret = os.getenv("onedrive_service_client_secret")
     tenant_id = os.getenv("onedrive_service_tenant_id")
     user_id = os.getenv("onedrive_userid")
-    drive_id = os.getenv("onedrive_drive_id")
-    '''
+    drive_id = os.getenv("onedrive_drive_id")'''
+    
     TelegramAPIController(
                         api_id,
                         api_hash,
