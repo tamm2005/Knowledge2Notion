@@ -36,12 +36,12 @@ class ThreadsGrabService(object):
         self.tenant_id = tenant_id
         self.userid = userid
         self.drive_id = drive_id
-        self.oneapiservice = OneDrive_API(
+        '''self.oneapiservice = OneDrive_API(
                                 self.client_id,
                                 self.client_secret,
                                 self.tenant_id,
                                 self.userid,
-                                self.drive_id)
+                                self.drive_id)'''
 
     def json_to_notion_page(self,json_data):
         """
