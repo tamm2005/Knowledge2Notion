@@ -53,14 +53,14 @@ jobs:
       #  run: |
       #    pylint --errors-only $(git ls-files '*.py')
           
-      - name: execute gmail2notion script # run main.py
-        run: python main_gmail.py
-        env:
-          EMAIL_ID: ${{ secrets.EMAIL_ID }}
-          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_GMAIL_DATABASE_ID: ${{ secrets.NOTION_GMAIL_DATABASE_ID }}
-          GMAIL_LABEL: ${{ vars.GMAIL_LABEL }}
+      #- name: execute gmail2notion script # run main.py
+      #  run: python main_gmail.py
+      #  env:
+      #    EMAIL_ID: ${{ secrets.EMAIL_ID }}
+      #    GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+      #    NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      #    NOTION_GMAIL_DATABASE_ID: ${{ secrets.NOTION_GMAIL_DATABASE_ID }}
+      #    GMAIL_LABEL: ${{ vars.GMAIL_LABEL }}
 
       - name: execute threads2notion script # run main.py
         run: python main_telegram.py
@@ -76,17 +76,17 @@ jobs:
           ONEDRIVE_DRIVE_ID: ${{ secrets.ONEDRIVE_DRIVE_ID }}
           TELEGRAM_THREAD_GROUP: ${{ vars.TELEGRAM_THREAD_GROUP }}
 
-      - name: execute yt2notion script # run main.py
-        run: python main_youtube.py
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_THREADS_DATABASE_ID: ${{ secrets.NOTION_YOUTUBE_DATABASE_ID }}
-          ONEDRIVE_SERVICE_CLIENT_ID: ${{ secrets.ONEDRIVE_SERVICE_CLIENT_ID }}
-          ONEDRIVE_SERVICE_CLIENT_SECRET: ${{ secrets.ONEDRIVE_SERVICE_CLIENT_SECRET }}
-          ONEDRIVE_SERVICE_TENANT_ID: ${{ secrets.ONEDRIVE_SERVICE_TENANT_ID }}
-          ONEDRIVE_USERID: ${{ secrets.ONEDRIVE_USERID }}
-          ONEDRIVE_DRIVE_ID: ${{ secrets.ONEDRIVE_DRIVE_ID }}
-          YOUTUBEAPIKEY: ${{ secrets.YOUTUBEAPIKEY }}
-          PLAYLIST: ${{ vars.YT_PLAYLIST_IDS }}
+      #- name: execute yt2notion script # run main.py
+      #  run: python main_youtube.py
+      #  env:
+      #    NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      #    NOTION_THREADS_DATABASE_ID: ${{ secrets.NOTION_YOUTUBE_DATABASE_ID }}
+      #    ONEDRIVE_SERVICE_CLIENT_ID: ${{ secrets.ONEDRIVE_SERVICE_CLIENT_ID }}
+      #    ONEDRIVE_SERVICE_CLIENT_SECRET: ${{ secrets.ONEDRIVE_SERVICE_CLIENT_SECRET }}
+      #    ONEDRIVE_SERVICE_TENANT_ID: ${{ secrets.ONEDRIVE_SERVICE_TENANT_ID }}
+      #    ONEDRIVE_USERID: ${{ secrets.ONEDRIVE_USERID }}
+      #    ONEDRIVE_DRIVE_ID: ${{ secrets.ONEDRIVE_DRIVE_ID }}
+      #    YOUTUBEAPIKEY: ${{ secrets.YOUTUBEAPIKEY }}
+      #    PLAYLIST: ${{ vars.YT_PLAYLIST_IDS }}
       
           
