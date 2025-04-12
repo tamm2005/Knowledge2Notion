@@ -47,7 +47,7 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
 
                 # Try to extract and store the job title
                 try:
-                    contents=job_soup.find('div', class_='show-more-less-html__markup show-more-less-html__markup--clamp-after-5 relative overflow-hidden').text.strip()
+                    contents=job_soup.find('div', class_='show-more-less-html__markup show-more-less-html__markup--clamp-after-5 relative overflow-hidden').text.replace('�', '').strip()
                 except:
                     contents=''
                     
@@ -68,7 +68,7 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     'job_title': {'rich_text': [{'text': {'content': job_title}}]},
                     'company_name': {'rich_text': [{'text': {'content': company_name}}]},
                     'contents': {'rich_text': [{'text': {'content': contents}}]},
-                    'time_posted': {'date': {'start': time_posted}},
+                    'time_posted': {'rich_text': [{'text': {'content': time_posted}}]},
                     'num_applicants': {'rich_text': [{'text': {'content': num_applicants}}]}
                     }
                 )
