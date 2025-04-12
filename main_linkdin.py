@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
-from services.telegram import TelegramAPIService
-from services.telegram_threads import ThreadsGrabService
+from services.linkdin import LinkdinGrabService
 
 class LinkdinAPIController(object):
     """
