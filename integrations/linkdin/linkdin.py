@@ -6,7 +6,7 @@ from typing import List, Dict
 import json
 
 def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> List[Dict]:
-    job_id_total,job_title,company_name,contents,time_posted,num_applicants = [],[],[],[],[]
+    job_id_total,job_title,company_name,contents,time_posted,num_applicants = [],[],[],[],[],[]
     while start < 1000 and flag == 1:
         job_id_list = []
         print(start)
