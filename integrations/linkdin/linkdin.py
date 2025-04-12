@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import time
+from typing import List, Dict
 
-def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> list[dict]:
+def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> List[Dict]:
 
     while start < 1000 and flag == 1:
         job_id_list = []
