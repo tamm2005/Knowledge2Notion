@@ -15,7 +15,6 @@ class LinkdinGrabService(object):
         self.keywords = keywords
         self.start = start
         self.stop_sec = stop_sec
-        self.flag = flag
         self.job_description_list = fetch_linkedin_jobs(self.keywords,
                                  self.start,
                                  self.stop_sec)
