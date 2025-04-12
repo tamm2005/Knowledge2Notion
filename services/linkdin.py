@@ -18,11 +18,11 @@ class LinkdinGrabService(object):
         self.job_description_list = fetch_linkedin_jobs(self.keywords,
                                  self.start,
                                  self.stop_sec)
-        self.notion_list = self.json_to_notion_page(self.job_description_list)
+        #self.notion_list = self.json_to_notion_page(self.job_description_list)
         self.notion_service = Notion_API(
                                 self.notion_token,
                                 self.databaseid,
-                                self.notion_list,
+                                self.job_description_list,
                                 []
                             )
 
