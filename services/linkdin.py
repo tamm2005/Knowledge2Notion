@@ -18,16 +18,33 @@ class LinkdinGrabService(object):
         self.job_description_list = fetch_linkedin_jobs(self.keywords,
                                  self.start,
                                  self.stop_sec)
-        import sys
-        import io
-        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-        print(self.job_description_list)
+        self.notion_list = self.json_to_notion_page(self.job_description_list)
         self.notion_service = Notion_API(
                                 self.notion_token,
                                 self.databaseid,
-                                self.job_description_list,
+                                self.notion_list,
                                 []
                             )
+
+    def json_to_notion_page(self,json_data):
+        """
+        This function is used to convert the JSON data to Notion page
+
+        Args:
+        json_data: dict: The JSON data
+
+        Returns:
+        payload: dict: The Notion page payload
+        """
+
+        return {
+                'job_id': {'title': [{'text': {'content': json_data["job_id"]}}]},
+                'job_title': {'rich_text': [{'text': {'content': json_data["job_title"]}}]},
+                'company_name': {'rich_text': [{'text': {'company_name': json_data["company_name"]}}]},
+                'contents': {'rich_text': [{'text': {'content': json_data["contents"]}}]},
+                'time_posted': {'date': {'start': json_data["time_posted"]}},
+                'num_applicants': {'rich_text': [{'text': {'content': json_data["num_applicants"]}}]}
+                }
     
     def main(self):
         status_code,response_content = self.notion_service.write_to_notion_page()
