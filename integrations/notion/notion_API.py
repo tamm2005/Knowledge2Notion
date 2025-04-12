@@ -125,7 +125,6 @@ class Notion_API(object):
         url = "https://api.notion.com/v1/pages"
         headers = self.notion_information("2021-05-13")
         payload = self.notion_payload_createpage()
-        print(payload)
         response = requests.post(url, headers=headers, json=payload, timeout=20)
         return response.status_code, response.json()
 
