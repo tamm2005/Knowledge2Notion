@@ -18,13 +18,12 @@ class LinkdinGrabService(object):
         self.job_description_list = fetch_linkedin_jobs(self.keywords,
                                  self.start,
                                  self.stop_sec)
-        self.notion_service = Notion_API(self.notion_token, self.databaseid)
-    
-    def main(self):
-        notionAPIservice = Notion_API(
+        self.notion_service = Notion_API(
                                 self.notion_token,
                                 self.databaseid,
                                 self.job_description_list,
                                 []
                             )
-        status_code,response_content = notionAPIservice.write_to_notion_page()
+    
+    def main(self):
+        status_code,response_content = self.notion_service.write_to_notion_page()
