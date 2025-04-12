@@ -46,7 +46,7 @@ class LinkdinGrabService(object):
                                     self.notion_token,
                                     self.databaseid,
                                     notion_data,
-                                    []
+                                    {}
                                 )
             status_code,response_content = notion_service.write_to_notion_page()
 
