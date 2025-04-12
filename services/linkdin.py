@@ -18,7 +18,9 @@ class LinkdinGrabService(object):
         self.job_description_list = fetch_linkedin_jobs(self.keywords,
                                  self.start,
                                  self.stop_sec)
-        print(self.job_description_list)
+        import sys
+        import io
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         self.notion_service = Notion_API(
                                 self.notion_token,
                                 self.databaseid,
