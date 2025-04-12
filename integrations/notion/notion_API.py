@@ -520,7 +520,6 @@ class Notion_API(object):
                                     response.status_code)
                             print(response.json())
                             self.delete_notion_page(page_id,headers)
-                            os.system('pause')
                     elif images is not None:
                         payload = {"children": self.image_json(images)}
 
