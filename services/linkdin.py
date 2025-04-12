@@ -31,3 +31,6 @@ class LinkdinGrabService(object):
     
     def main(self):
         status_code,response_content = self.notion_service.write_to_notion_page()
+
+        print(status_code)
+        print(response_content)
