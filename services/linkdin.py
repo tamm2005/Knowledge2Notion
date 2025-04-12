@@ -19,12 +19,6 @@ class LinkdinGrabService(object):
                                  self.start,
                                  self.stop_sec)
         #self.notion_list = self.json_to_notion_page(self.job_description_list)
-        self.notion_service = Notion_API(
-                                self.notion_token,
-                                self.databaseid,
-                                self.job_description_list,
-                                []
-                            )
 
     def json_to_notion_page(self,json_data):
         """
@@ -47,7 +41,14 @@ class LinkdinGrabService(object):
                 }
     
     def main(self):
-        status_code,response_content = self.notion_service.write_to_notion_page()
+        for notion_data in self.job_description_list:
+            notion_service = Notion_API(
+                                    self.notion_token,
+                                    self.databaseid,
+                                    notion_data,
+                                    []
+                                )
+            status_code,response_content = notion_service.write_to_notion_page()
 
-        print(status_code)
-        print(response_content)
+            print(status_code)
+            print(response_content)
