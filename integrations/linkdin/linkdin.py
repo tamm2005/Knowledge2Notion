@@ -66,5 +66,5 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
 
             start += len(page_jobs)
             time.sleep(stop_sec)  # Sleep for 1 second to avoid hitting the server too hard
-    
+    print(job_info)
     return job_info
