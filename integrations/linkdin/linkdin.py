@@ -5,7 +5,7 @@ import time
 from typing import List, Dict
 
 def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> List[Dict]:
-
+    job_info = []
     while start < 1000 and flag == 1:
         job_id_list = []
         print(start)
@@ -14,7 +14,6 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
         list_data = response.text
         list_soup = BeautifulSoup(list_data, "html.parser")
         page_jobs = list_soup.find_all("li")
-        job_info = []
 
         for job in page_jobs:
             try:
