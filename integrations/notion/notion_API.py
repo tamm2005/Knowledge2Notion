@@ -116,7 +116,7 @@ class Notion_API(object):
 
     def update_num_of_applicants(self, page_id: str, payload: dict) -> Tuple[int, dict]:
         url = f'https://api.notion.com/v1/pages/{page_id}'
-        headers = self.notion_information()
+        headers = self.notion_information("2021-08-16")
         response = requests.patch(url, headers=headers, json=payload, timeout=20)
         return response.status_code, response.json()
 
