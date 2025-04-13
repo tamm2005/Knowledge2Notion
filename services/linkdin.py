@@ -27,7 +27,7 @@ class LinkdinGrabService(object):
                                     notion_data,
                                     {}
                                 )
-            status, notion_resp = self.read_notion_response(self.job_id_data[index], "job_id")
+            status, notion_resp = notion_service.read_notion_response(self.job_id_data[index], "job_id")
             results = notion_resp.get("results", [])
             if not results:
                 print(f"[NEW] job_id {job_id} not found in Notion.")
@@ -44,6 +44,6 @@ class LinkdinGrabService(object):
                     }
                 }
                 print(payload)
-                self.update_num_of_applicants(page_id, payload)
+                notion_service.update_num_of_applicants(page_id, payload)
             else:
                 print(f"[SKIP] job_id {job_id} unchanged.")
