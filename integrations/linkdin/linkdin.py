@@ -70,7 +70,6 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     'job_id': {'title': [{'text': {'content': job_id_total}}]},
                     'job_title': {'rich_text': [{'text': {'content': job_title}}]},
                     'company_name': {'rich_text': [{'text': {'content': company_name}}]},
-                    'contents': {'rich_text': [{'text': {'content': contents}}]},
                     'time_posted': {'rich_text': [{'text': {'content': time_posted}}]},
                     'num_applicants': {'rich_text': [{'text': {'content': num_applicants}}]}
                     }
