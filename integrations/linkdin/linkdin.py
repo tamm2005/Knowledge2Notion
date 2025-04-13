@@ -78,7 +78,7 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     }
                 )
 
-                job_id_data.appebd(job_id_total)
+                job_id_data.append(job_id_total)
                 num_applicants.append(num_applicants)
 
             start += len(page_jobs)
