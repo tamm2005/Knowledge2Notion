@@ -43,7 +43,9 @@ class LinkdinGrabService(object):
                     print("Page successfully Create to Notion!")
                     page_id = response_content['id']
                     for key, _ in self.page_content[index].items():
-                        notion_service.write_to_notion_content(page_id,key,key)
+                        print(key)
+
+                        notion_service.write_to_notion_content(page_id,key,'')
                 else:
                     page_id = None
                     print(response_content)
