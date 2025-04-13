@@ -37,7 +37,7 @@ class LinkdinGrabService(object):
                 continue  # Or insert logic
             page_id = results[0]["id"]
             print(results[0]['properties'])
-            rich_texts = results[0]["properties"]["num_of_applicants"]["rich_text"][0]["text"]["content"]
+            rich_texts = results[0]["properties"]["num_applicants"]["rich_text"][0]["text"]["content"]
             print(rich_texts)
             if self.num_applicants[index] != rich_texts:
                 print(f"[UPDATE] job_id {job_id}")
