@@ -27,7 +27,8 @@ class LinkdinGrabService(object):
                                     notion_data,
                                     {}
                                 )
-            status, notion_resp = notion_service.read_notion_response(self.job_id_data[index], "job_id")
+            job_id = self.job_id_data[index]
+            status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
             results = notion_resp.get("results", [])
             if not results:
                 print(f"[NEW] job_id {job_id} not found in Notion.")
@@ -37,7 +38,7 @@ class LinkdinGrabService(object):
             rich_texts = results[0]["properties"]["num_of_applicants"]["rich_text"][0]["text"]["content"]
             print(rich_texts)
             if self.num_applicants[index] != rich_texts:
-                print(f"[UPDATE] job_id {job_id}: {notion_applicants} ➝ {applicants}")
+                print(f"[UPDATE] job_id {job_id}")
                 payload = {
                     "properties": {
                         'num_applicants': {'rich_text': [{'text': {'content': self.num_applicants[index]}}]}
