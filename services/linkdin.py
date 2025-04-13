@@ -4,6 +4,7 @@ from integrations.linkdin.linkdin import fetch_linkedin_jobs
 from integrations.notion.notion_API import Notion_API
 import sys
 import io
+import json
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 class LinkdinGrabService(object):
