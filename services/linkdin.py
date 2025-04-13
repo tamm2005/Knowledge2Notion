@@ -43,7 +43,6 @@ class LinkdinGrabService(object):
                     print("Page successfully Create to Notion!")
                     page_id = response_content['id']
                     for key, _ in self.page_content[index].items():
-                        print(key,_)
 
                         notion_service.write_to_notion_content(page_id,key,'')
                 else:
@@ -52,7 +51,7 @@ class LinkdinGrabService(object):
                     print("Error uploading JSON data to Notion. Status code:", status_code)
 
                 print(status_code)
-                print(json.dumps(response_content, ensure_ascii=False, indent=2))
+
                 continue  # Or insert logic
 
             page_id = results[0]["id"]
