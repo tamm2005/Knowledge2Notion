@@ -29,7 +29,7 @@ class LinkdinGrabService(object):
                                     self.notion_token,
                                     self.databaseid,
                                     notion_data,
-                                    self.page_content
+                                    self.page_content[index],
                                 )
             job_id = self.job_id_data[index]
             status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
@@ -50,7 +50,6 @@ class LinkdinGrabService(object):
                     print("Error uploading JSON data to Notion. Status code:", status_code)
 
                 print(status_code)
-                print(notion_data)
                 print(json.dumps(response_content, ensure_ascii=False, indent=2))
                 continue  # Or insert logic
 
