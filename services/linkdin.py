@@ -28,7 +28,6 @@ class LinkdinGrabService(object):
                                     {}
                                 )
             job_id = self.job_id_data[index]
-            print(job_id)
             status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
             results = notion_resp.get("results", [])
             if not results:
@@ -36,9 +35,7 @@ class LinkdinGrabService(object):
                 status_code,response_content = notion_service.write_to_notion_page()
                 continue  # Or insert logic
             page_id = results[0]["id"]
-            print(results[0]['properties'])
             rich_texts = results[0]["properties"]["num_applicants"]["rich_text"][0]["text"]["content"]
-            print(rich_texts)
             if self.num_applicants[index] != rich_texts:
                 print(f"[UPDATE] job_id {job_id}")
                 payload = {

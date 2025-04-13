@@ -27,9 +27,7 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
         if flag == 1:
             for job_id in job_id_list:
                 job_url = f"https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}"
-                print(job_url)
                 job_response = requests.get(job_url)
-                print(job_response)
                 job_soup = BeautifulSoup(job_response.text, "html.parser")
                 job_post = {}
                 job_id_total = job_id
