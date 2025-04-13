@@ -29,7 +29,7 @@ class LinkdinGrabService(object):
                                     self.notion_token,
                                     self.databaseid,
                                     notion_data,
-                                    self.page_content[index],
+                                    [self.page_content[index]],
                                 )
             job_id = self.job_id_data[index]
             status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
