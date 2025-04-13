@@ -6,7 +6,7 @@ from typing import List, Dict
 import json
 
 def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> List[Dict]:
-    notion_data,job_id_data,num_applicants_data,page_content = [], [], [], []
+    notion_data,job_id_data,num_applicants_data,page_content = [], [], [], {}
     while start < 1000 and flag == 1:
         job_id_list = []
         print(start)
@@ -74,9 +74,8 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     'num_applicants': {'rich_text': [{'text': {'content': num_applicants}}]}
                     }
                 )
-                page_content.append(
-                    {
-                        "Post": {
+                page_content['Post'].append(
+ {
                             "text":contents, # pylint: disable=unsubscriptable-object
                             'images':[None], # pylint: disable=unsubscriptable-object
                             'videos':[None], # pylint: disable=unsubscriptable-object
@@ -85,7 +84,6 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                             'web_bookmarks':None,
                             'image_messages':None,
                             'video_messages':None
-                        }
                     }
                 )
 
