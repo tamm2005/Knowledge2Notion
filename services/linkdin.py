@@ -34,7 +34,7 @@ class LinkdinGrabService(object):
             job_id = self.job_id_data[index]
             status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
             results = notion_resp.get("results", [])
-            
+
             if not results:
                 print(f"[NEW] job_id {job_id} not found in Notion.")
                 status_code,response_content = notion_service.write_to_notion_page()
@@ -42,7 +42,7 @@ class LinkdinGrabService(object):
                 if status_code == 200:
                     print("Page successfully Create to Notion!")
                     page_id = response_content['id']
-                    for key, _ in self.page_content.items():
+                    for key, _ in self.page_content[index].items():
                         notion_service.write_to_notion_content(page_id,key,key)
                 else:
                     page_id = None
