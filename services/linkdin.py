@@ -37,7 +37,7 @@ class LinkdinGrabService(object):
                 print(f"[NEW] job_id {job_id} not found in Notion.")
                 status_code,response_content = notion_service.write_to_notion_page()
                 print(status_code)
-                print(notion_data.encode('ascii', errors='ignore').decode())
+                print(notion_data)
                 print(response_content.encode('ascii', errors='ignore').decode())
                 continue  # Or insert logic
             page_id = results[0]["id"]
