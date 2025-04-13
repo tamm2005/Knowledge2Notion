@@ -33,6 +33,7 @@ class LinkdinGrabService(object):
             if not results:
                 print(f"[NEW] job_id {job_id} not found in Notion.")
                 status_code,response_content = notion_service.write_to_notion_page()
+                print(status_code)
                 continue  # Or insert logic
             page_id = results[0]["id"]
             rich_texts = results[0]["properties"]["num_applicants"]["rich_text"][0]["text"]["content"]
@@ -44,6 +45,7 @@ class LinkdinGrabService(object):
                     }
                 }
                 print(payload)
+                print(rich_texts)
                 notion_service.update_num_of_applicants(page_id, payload)
             else:
                 print(f"[SKIP] job_id {job_id} unchanged.")
