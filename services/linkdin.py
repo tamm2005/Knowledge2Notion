@@ -38,7 +38,7 @@ class LinkdinGrabService(object):
                 status_code,response_content = notion_service.write_to_notion_page()
                 print(status_code)
                 print(notion_data)
-                print(response_content.encode('ascii', errors='ignore').decode())
+                print(json.dumps(response_content, ensure_ascii=False, indent=2))
                 continue  # Or insert logic
             page_id = results[0]["id"]
             rich_texts = results[0]["properties"]["num_applicants"]["rich_text"][0]["text"]["content"]
