@@ -114,6 +114,12 @@ class Notion_API(object):
         response = requests.post(url, headers=headers, json=data, timeout=20)
         return response.status_code, response.json()
 
+    def update_num_of_applicants(self, page_id: str, payload: dict) -> Tuple[int, dict]:
+        url = f'https://api.notion.com/v1/pages/{page_id}'
+        headers = self.notion_information()
+        response = requests.patch(url, headers=headers, json=payload, timeout=20)
+        return response.status_code, response.json()
+
     def write_to_notion_page(self) -> Tuple[int, dict]:
         """
         Write the JSON data to the Notion page.

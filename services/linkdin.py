@@ -15,37 +15,35 @@ class LinkdinGrabService(object):
         self.keywords = keywords
         self.start = start
         self.stop_sec = stop_sec
-        self.job_description_list = fetch_linkedin_jobs(self.keywords,
+        self.job_description_list, self.job_id_data, self.num_applicants = fetch_linkedin_jobs(self.keywords,
                                  self.start,
                                  self.stop_sec)
-        #self.notion_list = self.json_to_notion_page(self.job_description_list)
 
-    def json_to_notion_page(self,json_data):
-        """
-        This function is used to convert the JSON data to Notion page
-
-        Args:
-        json_data: dict: The JSON data
-
-        Returns:
-        payload: dict: The Notion page payload
-        """
-
-        return {
-                'job_id': {'title': [{'text': {'content': json_data["job_id"]}}]},
-                'job_title': {'rich_text': [{'text': {'content': json_data["job_title"]}}]},
-                'company_name': {'rich_text': [{'text': {'company_name': json_data["company_name"]}}]},
-                'contents': {'rich_text': [{'text': {'content': json_data["contents"]}}]},
-                'time_posted': {'date': {'start': json_data["time_posted"]}},
-                'num_applicants': {'rich_text': [{'text': {'content': json_data["num_applicants"]}}]}
-                }
-    
     def main(self):
-        for notion_data in self.job_description_list:
+        for notion_data, index in enumerate(self.job_description_list):
             notion_service = Notion_API(
                                     self.notion_token,
                                     self.databaseid,
                                     notion_data,
                                     {}
                                 )
-            status_code,response_content = notion_service.write_to_notion_page()
+            status, notion_resp = self.read_notion_response(self.job_id_data[index], "job_id")
+            results = notion_resp.get("results", [])
+            if not results:
+                print(f"[NEW] job_id {job_id} not found in Notion.")
+                status_code,response_content = notion_service.write_to_notion_page()
+                continue  # Or insert logic
+            page_id = results[0]["id"]
+            rich_texts = results[0]["properties"]["num_of_applicants"]["rich_text"][0]["text"]["content"]
+            print(rich_texts)
+            if self.num_applicants[index] != rich_texts:
+                print(f"[UPDATE] job_id {job_id}: {notion_applicants} ➝ {applicants}")
+                payload = {
+                    "properties": {
+                        'num_applicants': {'rich_text': [{'text': {'content': self.num_applicants[index]}}]}
+                    }
+                }
+                print(payload)
+                self.update_num_of_applicants(page_id, payload)
+            else:
+                print(f"[SKIP] job_id {job_id} unchanged.")

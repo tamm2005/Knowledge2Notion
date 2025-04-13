@@ -6,7 +6,7 @@ from typing import List, Dict
 import json
 
 def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> List[Dict]:
-    notion_data = []
+    notion_data,job_id_data,num_applicants = [], [], []
     while start < 1000 and flag == 1:
         job_id_list = []
         print(start)
@@ -78,6 +78,9 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     }
                 )
 
+                job_id_data.appebd(job_id_total)
+                num_applicants.append(num_applicants)
+
             start += len(page_jobs)
             time.sleep(stop_sec)  # Sleep for 1 second to avoid hitting the server too hard
-    return notion_data
+    return notion_data, job_id_data, num_applicants
