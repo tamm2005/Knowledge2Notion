@@ -20,7 +20,7 @@ class LinkdinGrabService(object):
                                  self.stop_sec)
 
     def main(self):
-        for notion_data, index in enumerate(self.job_description_list):
+        for index,notion_data in enumerate(self.job_description_list):
             notion_service = Notion_API(
                                     self.notion_token,
                                     self.databaseid,
