@@ -5,6 +5,15 @@ import time
 from typing import List, Dict
 import json
 
+def insert_newlines_every_n_words(text, n=1500):
+    words = text.split()
+    print(f"Total words: {len(words)}")  # Debug line
+    if len(words) <= n:
+        return text
+
+    chunks = [' '.join(words[i:i + n]) for i in range(0, len(words), n)]
+    return '\n'.join(chunks)
+
 def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:int=10, flag:int=1) -> List[Dict]:
     notion_data,job_id_data,num_applicants_data, page_content, notion_page_content = [], [], [], [], {}
     notion_page_content["Post"] = []
@@ -52,9 +61,8 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     ).text
 
                     contents = div.get_text(separator=' ', strip=False) if div else ''
-                    words = contents.split()
-                    chunks = [' '.join(words[i:i + n]) for i in range(0, len(words), 1500)]
-                    contents = '\n'.join(chunks)
+                    contents = insert_newlines_every_n_words(contents, n=1500)
+                    print(contents)
                     #contents = contents.split(".")
                     #contents = '\n'.join(contents)
                 except:
