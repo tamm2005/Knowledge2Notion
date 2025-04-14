@@ -27,11 +27,7 @@ class LinkdinGrabService(object):
         for index,notion_data in enumerate(self.job_description_list):
             notion_page_content = {}
             notion_page_content["Post"] = []
-            notion_service = Notion_API(
-                                    self.notion_token,
-                                    self.databaseid,
-                                    notion_data,
-                                    notion_page_content['Post'].append({
+            notion_page_content['Post'].append({
                                         "text": [self.page_content[index]],
                                         "images": [None],
                                         "videos": [None],
@@ -41,6 +37,11 @@ class LinkdinGrabService(object):
                                         "image_messages": [None],
                                         "video_messages": [None]
                                     })
+            notion_service = Notion_API(
+                                    self.notion_token,
+                                    self.databaseid,
+                                    notion_data,
+                                    notion_page_content     
                                 )
             job_id = self.job_id_data[index]
             status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
