@@ -58,7 +58,7 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     div = job_soup.find(
                         'div',
                         class_='show-more-less-html__markup show-more-less-html__markup--clamp-after-5 relative overflow-hidden'
-                    ).text
+                    )
 
                     contents = div.get_text(separator=' ', strip=False) if div else ''
                     contents = insert_newlines_every_n_words(contents, n=1500)
