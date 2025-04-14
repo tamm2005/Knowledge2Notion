@@ -50,7 +50,7 @@ class LinkdinGrabService(object):
             if not results:
                 print(f"[NEW] job_id {job_id} not found in Notion.")
                 status_code,response_content = notion_service.write_to_notion_page()
-                
+                print(notion_data)
                 if status_code == 200:
                     print("Page successfully Create to Notion!")
                     page_id = response_content['id']
@@ -59,8 +59,7 @@ class LinkdinGrabService(object):
                     page_id = None
                     print(response_content)
                     print("Error uploading JSON data to Notion. Status code:", status_code)
-                    print(notion_data)
-
+                    
                 print(status_code)
 
                 continue  # Or insert logic
