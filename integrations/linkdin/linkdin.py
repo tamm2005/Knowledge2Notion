@@ -76,18 +76,7 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                     }
                 )
                 page_content.append(
-                    notion_page_content['Post'].append(
-                        {
-                            "text":contents, # pylint: disable=unsubscriptable-object
-                            'images':[None], # pylint: disable=unsubscriptable-object
-                            'videos':[None], # pylint: disable=unsubscriptable-object
-                            'pdf_links':None,
-                            'caption_strings':None,
-                            'web_bookmarks':None,
-                            'image_messages':None,
-                            'video_messages':None
-                        }
-                    )
+                    contents
                 )
 
                 job_id_data.append(job_id)
