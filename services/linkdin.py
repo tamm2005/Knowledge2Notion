@@ -28,7 +28,7 @@ class LinkdinGrabService(object):
             notion_page_content = {}
             notion_page_content["Post"] = []
             notion_page_content['Post'].append({
-                                        "text": [self.page_content[index]],
+                                        "text": self.page_content[index],
                                         "images": [None],
                                         "videos": [None],
                                         "pdf_links": [None],
