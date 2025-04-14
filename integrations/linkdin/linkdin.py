@@ -50,8 +50,11 @@ def fetch_linkedin_jobs(keywords: str = "DataEngineer", start: int=0, stop_sec:i
                         'div',
                         class_='show-more-less-html__markup show-more-less-html__markup--clamp-after-5 relative overflow-hidden'
                     )
+                    print(div)
 
-                    contents = div.get_text(separator=' ', strip=True) if div else ''
+                    contents = div.get_text(separator=' ', strip=False) if div else ''
+
+                    print(contents)
                 except:
                     contents=''
                     
