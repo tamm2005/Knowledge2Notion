@@ -59,6 +59,7 @@ class LinkdinGrabService(object):
                     page_id = None
                     print(response_content)
                     print("Error uploading JSON data to Notion. Status code:", status_code)
+                    print(notion_data)
 
                 print(status_code)
 
