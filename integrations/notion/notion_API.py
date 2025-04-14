@@ -456,6 +456,7 @@ class Notion_API(object):
         try:
             if len(self.json_data_page_children[json_type]) > 0:
                 for content_string in self.json_data_page_children[json_type]:
+                    print(content_string['text'])
                     if content_string['text'] is None:
                         flag = 1
                         content = ''
