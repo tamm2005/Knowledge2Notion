@@ -29,13 +29,13 @@ class LinkdinGrabService(object):
             notion_page_content["Post"] = []
             notion_page_content['Post'].append({
                                         "text": self.page_content[index],
-                                        "images": [None],
-                                        "videos": [None],
-                                        "pdf_links": [None],
-                                        "caption_strings": [None],
-                                        "web_bookmarks": [None],
-                                        "image_messages": [None],
-                                        "video_messages": [None]
+                                        "images": None,
+                                        "videos": None,
+                                        "pdf_links": None,
+                                        "caption_strings": None,
+                                        "web_bookmarks": None,
+                                        "image_messages": None,
+                                        "video_messages": None
                                     })
             notion_service = Notion_API(
                                     self.notion_token,
