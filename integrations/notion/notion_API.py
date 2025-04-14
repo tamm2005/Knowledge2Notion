@@ -454,10 +454,8 @@ class Notion_API(object):
         headers = self.notion_information("2022-06-28")
         url = f"https://api.notion.com/v1/blocks/{page_id}/children"
         try:
-            print(self.json_data_page_children)
             if len(self.json_data_page_children[json_type]) > 0:
                 for content_string in self.json_data_page_children[json_type]:
-                    print(content_string['text'])
                     if content_string['text'] is None:
                         flag = 1
                         content = ''
@@ -474,8 +472,9 @@ class Notion_API(object):
 
                     if flag == 0:
                         for index,chunk in enumerate(self.split_string_by_length(content,1500)):
-
+                            
                             input_string = ''.join(chunk)
+                            print(len(input_string))
 
                             if index == 0:
                                 payload = {
