@@ -502,6 +502,7 @@ class Notion_API(object):
                                 print("Error uploading String to Notion. Status code:",
                                         response.status_code)
                                 print(response.status_code)
+                                print(response.json())
                                 self.delete_notion_page(page_id,headers)
                     else:
                         payload = {"children": self.headingone_json(heading_string)}
