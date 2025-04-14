@@ -29,7 +29,7 @@ class LinkdinGrabService(object):
                                     self.notion_token,
                                     self.databaseid,
                                     notion_data,
-                                    self.page_content[index],
+                                    self.page_content[index]['Post'],
                                 )
             job_id = self.job_id_data[index]
             status, notion_resp = notion_service.read_notion_response(job_id, "job_id")
@@ -42,9 +42,7 @@ class LinkdinGrabService(object):
                 if status_code == 200:
                     print("Page successfully Create to Notion!")
                     page_id = response_content['id']
-                    for key, _ in self.page_content[index].items():
-
-                        notion_service.write_to_notion_content(page_id,key,'')
+                    notion_service.write_to_notion_content(page_id,'Post','')
                 else:
                     page_id = None
                     print(response_content)
